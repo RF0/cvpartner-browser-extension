@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "cvpe",
+  "version": "1.0",
+  "description": "CVPS - CV Partner Exctension",
+  "actions": {
+    "default_popup": "popup.html",
+    "default_icon": "images/icon16.png"
+  },
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "action": {
+    "default_title": "CV Partner Extension"
+  },
+  "permissions": ["tabs","sidePanel"],
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+B",
+        "mac": "Command+B"
+      }
+    }
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://fisk.cvpartner.com/*"],  
+      "css": ["sidepanel.css"],
+      "js": ["sidepanel.js"],
+      "run_at": "document_idle",
+      "world": "MAIN"
+    }]
+}
